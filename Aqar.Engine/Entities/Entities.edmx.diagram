@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="480fc39a13d14d59bcf3916b9902ceb0" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.City" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ContactForm" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ContactU" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ContractType" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Image360" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImageBalacony" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImageBathroom" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImageBedroom" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImageGarden" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImagePool" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.ImageReception" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.MainMenuBackend" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.MainMenuFrontend" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.PhotoSession" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.PriceAverage" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Property" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.PropertyType" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.PropertyVeiwed" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Reservation" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Role" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.SpaceAverage" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Square" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.SubMenuBackend" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.SubMenuFrontend" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.SystemUser" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.TbCurrency" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.TopTenProperty" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.UserContact" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.UserFavourite" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.UserRate" Width="1.5" PointX="4.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Alfardan.Engine.Entities.Users_Role" Width="1.5" PointX="6.75" PointY="15.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
