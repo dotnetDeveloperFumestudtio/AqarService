@@ -1,4 +1,5 @@
-﻿using Aqar.Engine.BusinessEntities.Service;
+﻿using System;
+using Aqar.Engine.BusinessEntities.Service;
 using Aqar.Engine.Linq;
 using System.Collections.Generic;
 using System.Linq;
@@ -247,9 +248,9 @@ namespace Aqar.Engine.Helper
       else
         return null;
     }
- 
-  #region Helper Search Option
-      private List<ContractTypeService> ContractTypesList(RequestClass requestClass)
+
+    #region Helper Search Option
+    public static List<ContractTypeService> ContractTypesList(RequestClass requestClass)
     {
       var returnContractTy = new List<ContractTypeService>();
       var typeObj = dbContext.ContractTypes.Where(x => x.Status == true).ToList();
@@ -263,7 +264,7 @@ namespace Aqar.Engine.Helper
       }
       return returnContractTy;
     }
-    private List<PropertyTypeService> PropertyTypesList(RequestClass requestClass)
+    public static List<PropertyTypeService> PropertyTypesList(RequestClass requestClass)
     {
       var returnContractTy = new List<PropertyTypeService>();
       var typeObj = dbContext.PropertyTypes.Where(x => x.Status == true).ToList();
@@ -277,7 +278,7 @@ namespace Aqar.Engine.Helper
       }
       return returnContractTy;
     }
-    private List<PriceRangeService> PriceRangeList()
+    public static List<PriceRangeService> PriceRangeList()
     {
       var returnPriceRange = new List<PriceRangeService>();
       var priceObj = dbContext.PriceAverages.ToList().OrderByDescending(x => x.Id);
@@ -295,7 +296,7 @@ namespace Aqar.Engine.Helper
       }
       return returnPriceRange;
     }
-    private List<SpaceRangeService> SpaceRangeList()
+    public static List<SpaceRangeService> SpaceRangeList()
     {
       var returnSpaceRange = new List<SpaceRangeService>();
       var priceObj = dbContext.SpaceAverages.ToList().OrderByDescending(x => x.Id);
@@ -313,7 +314,7 @@ namespace Aqar.Engine.Helper
       }
       return returnSpaceRange;
     }
-    private List<CityService> CityList(RequestClass requestClass)
+    public static List<CityService> CityList(RequestClass requestClass)
     {
       var returnCity = new List<CityService>();
       var cityObj = dbContext.Cities.Where(x => x.Status == true).ToList().OrderByDescending(x => x.Id);
@@ -331,8 +332,15 @@ namespace Aqar.Engine.Helper
       }
       return returnCity;
     }
-   
+
     #endregion
+    public static int RandNumber(int low, int high)
+    {
+      var rndNum = new Random(int.Parse(Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
+      var rnd = rndNum.Next(low, high);
+      return rnd;
+    }
+
   }
 
 }

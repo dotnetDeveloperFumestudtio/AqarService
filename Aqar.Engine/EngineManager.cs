@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using Aqar.Engine.BusinessEntities;
+using Aqar.Engine.Common;
 using Aqar.Engine.Helper;
 using Aqar.Engine.Linq;
 //using Aqar.Engine.Notifications;
@@ -17,6 +18,11 @@ namespace Aqar.Engine
   public class EngineManager : IAqarService
   {
     public HeaderData Header { get; set; }
+    private const string DefaultDateFormatterString = "yyyy MM dd hh:mm:ss tt";
+    //Set the time zone information to US Mountain Standard Time 
+    static readonly TimeZoneInfo TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Egypt Standard Time");
+    //Get date and time in US Mountain Standard Time 
+    readonly DateTime _publicdateTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo);
     DataClasses1DataContext dbContext = new DataClasses1DataContext();
     public EngineManager()
     {
@@ -56,15 +62,67 @@ namespace Aqar.Engine
       }
     }
 
+    #region User
+
+    public Stream QuickRegister(UserRequestClass userrequestClass)
+    {
+      var returnUserData = new UserData();
+      var result = new Result();
+      try
+      {
+        var generateName = HelperMethods.RandNumber(10, 100).ToString();
+        var checkUser = dbContext.SystemUsers.FirstOrDefault(x => x.Status == true && x.PhoneNo == userrequestClass.Phone);
+        if (checkUser != null)
+        {
+          returnUserData.UserId = checkUser.Id;
+          returnUserData.UserName = checkUser.FirstName + " " + checkUser.LastName;
+          result.Error = Constants.AlreadyRegisted;
+          result.Data = returnUserData;
+          return Result.ToStream(result);
+        }
+        var userObj = new SystemUser();
+        if (userrequestClass.UserName == null)
+        {
+          userObj.FirstName = "Guest";
+          userObj.LastName = generateName;
+        }
+        else
+          userObj.FirstName = userrequestClass.UserName;
+
+        userObj.PhoneNo = userrequestClass.Phone;
+        userObj.Password = "123456";
+        userObj.Online = true;
+        userObj.Status = true;
+        userObj.CreatedDate = _publicdateTime;
+        dbContext.SystemUsers.InsertOnSubmit(userObj);
+        dbContext.SubmitChanges();
+        returnUserData.UserId = userObj.Id;
+        returnUserData.UserName = userObj.FirstName + " " + userObj.LastName;
+
+        result.Data = returnUserData;
+      }
+      catch (Exception)
+      {
+        result.Error = Constants.NotValid;
+
+        throw;
+      }
+
+      return Result.ToStream(result);
+
+    }
+
+    #endregion
+
     public Stream SearchOption(RequestClass requestClass)
     {
       var returnSearchOption = new List<SearchOptions>();
       var result = new Result();
-      var contractObj = ContractTypesList(requestClass);
-      var propertyTypeObj = PropertyTypesList(requestClass);
-      var priceRangeObj = PriceRangeList();
-      var spaceRangeObj = SpaceRangeList();
-      var cityObj = CityList(requestClass);
+      var contractObj = HelperMethods.ContractTypesList(requestClass);
+      var propertyTypeObj = HelperMethods.PropertyTypesList(requestClass);
+      var priceRangeObj = HelperMethods.PriceRangeList();
+      var spaceRangeObj = HelperMethods.SpaceRangeList();
+      var cityObj = HelperMethods.CityList(requestClass);
       if (contractObj.Any())
       {
         returnSearchOption.Add(new SearchOptions
@@ -151,7 +209,7 @@ namespace Aqar.Engine
       && (x.Approved == true && x.IsPublished == true)
       ) && (x.Approved == true && x.IsPublished == true)
 
-        ).ToList();
+        && x.Id > requestClass.LastId).ToList().Take(requestClass.Count);
       if (propertyObj.Any())
       {
         foreach (var item in propertyObj)
@@ -378,6 +436,10 @@ namespace Aqar.Engine
     public int PriceRangeId { get; set; }
     [DataMember]
     public int SpaceRangeId { get; set; }
+
+    public int LastId { get; set; }
+
+    public int Count { get; set; }
   }
 
 }

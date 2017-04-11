@@ -273,6 +273,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Common\RequestClass.cs" />
+    <Compile Include="Common\UserRequestClass.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="UserData.cs" />
   </ItemGroup>
@@ -315,6 +317,7 @@
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

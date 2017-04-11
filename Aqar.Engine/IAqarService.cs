@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Aqar.Engine.Common;
 
 namespace Aqar.Engine
 {
@@ -15,6 +16,9 @@ namespace Aqar.Engine
   public interface IAqarService
   {
 
+
+    [OperationContract]
+    Stream QuickRegister(UserRequestClass userrequestClass);
 
     [OperationContract]
     Stream SearchOption(RequestClass requestClass);

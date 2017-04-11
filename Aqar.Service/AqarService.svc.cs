@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Aqar.Engine;
 using System.ServiceModel.Web;
+using Aqar.Engine.Common;
+using RequestClass = Aqar.Engine.RequestClass;
 
 namespace Aqar.Service
 {
@@ -8,6 +10,12 @@ namespace Aqar.Service
   // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
   public class AqarService : IAqarService
   {
+    [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Register")]
+    public Stream QuickRegister(UserRequestClass userrequestClass)
+    {
+      return new EngineManager().QuickRegister(userrequestClass);
+    }
+      
     [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "SearchOptionList")]
     public Stream SearchOption(RequestClass requestClass)
     {
